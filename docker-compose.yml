@@ -3,9 +3,9 @@ services:
 
   app:
     image: web
-    container_name: backend-app
+    container_name: web-app
     build:
-      context: backend
+      context: .
       dockerfile: docker/Dockerfile
     volumes:
       - ./:/var/www
@@ -15,7 +15,7 @@ services:
 
   webserver:
     image: nginx:alpine
-    container_name: backend-webserver
+    container_name: web-webserver
     ports:
       - "80:80"
       - "443:443"
@@ -25,7 +25,7 @@ services:
 
   db:
     image: mysql:8
-    container_name: backend-db
+    container_name: web-db
     ports:
       - "3306:3306"
     environment:
